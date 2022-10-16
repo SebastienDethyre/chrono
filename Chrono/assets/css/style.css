@@ -1,0 +1,101 @@
+body,html {
+    margin: 0;
+}
+
+#stopWatchFrame {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: lightgray;
+    width: 100%;
+    height: 50%;
+}
+
+#startButton {
+    position: fixed;
+    background-image: url(../img/start.png);
+    width: 8%;
+    height: 8%;
+    top: 50%;
+    align-self: center;
+}
+
+#startButton:hover {
+    transform: scale(1.1)
+}
+
+#clockFrame {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: clamp(8rem,30% ,20em);
+    grid-auto-rows: minmax(20%, auto);
+    grid-gap: 1em;
+    grid-template-areas:
+    "counter counter"
+    "counter counter"
+    "plus minus";
+    height: 100%;
+    margin-top: .5em;
+}
+
+#counter {
+    grid-area: counter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgray;
+    border-radius: 25px;
+    cursor: default;
+    
+}
+
+#counter > h1 {
+    color: rgb(208, 2, 2);
+    font-size: clamp(8em, 15em, 80%);
+    font-family: 'digital', sans-serif;
+    font-weight: 100;
+    animation: heartbeat_text 2s  forwards;
+}
+
+.button {
+    background-size:100% 100%;
+    opacity: 60%;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    cursor: pointer ;
+}
+
+#plusButton {
+    grid-area: plus;
+    background-image: url(../img/plus.png);
+}
+
+#plusButton:hover {
+    transform: scale(1.1)
+}
+
+#minusButton {
+    grid-area: minus;
+    background-image:  url(../img/minus.png);
+}
+
+#minusButton:hover{
+    transform: scale(1.1)
+}
+
+@font-face {
+    font-family: 'digital';
+    src: url('../fonts/DS-DIGI.TTF') format('truetype');
+}
+
+@keyframes heartbeat_text{
+    from{
+        text-shadow: 0 0px 1px rgb(225, 225, 225); 
+        color: rgb(208, 2, 2); 
+    }
+    to{
+        text-shadow: 0 0px 25px rgba(253, 38, 0, 0.9);
+        color: rgba(253, 38, 0, 0.9);
+    }
+}

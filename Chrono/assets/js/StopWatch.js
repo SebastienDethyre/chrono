@@ -51,9 +51,8 @@ export class StopWatch {
             this.#startButton.addEventListener("click", countDown)
             console.log("Countdown done !");
         }
-
         this.#startButton.addEventListener("click", countDown);
-
+console.log("test")
         this.#numberColor.addEventListener("input", ()=> {
             let root = document.documentElement;
             root.style.setProperty('--numberColor', this.#numberColor.value * 3.6);

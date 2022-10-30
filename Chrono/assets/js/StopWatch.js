@@ -4,6 +4,7 @@ import { ClockFace     } from"./ClockFace.js"
 export class StopWatch {
     #element;
     #startButton
+    #numberColor
     #minutesCounter;
     #secondsCounter;
 
@@ -15,8 +16,9 @@ export class StopWatch {
     }
 
     #createElements(){
-        this.#element     = createElement("div" , {id:"stopWatchFrame"                }                );
-        this.#startButton = createElement("span", {id:"startButton", class : "button" }, this.#element );
+        this.#element     = createElement( "div"  , {id:"stopWatchFrame"                                                }                );
+        this.#startButton = createElement( "span" , {id:"startButton", class : "button"          , title:"Start"        }, this.#element );
+        this.#numberColor = createElement( "input", {id:"numberColor", type  : "range" , value: 0, title:"Change color" }, this.#element );
     }
     
     #specialCondition(i) {
@@ -49,6 +51,12 @@ export class StopWatch {
             this.#startButton.addEventListener("click", countDown)
             console.log("Countdown done !");
         }
-        this.#startButton.addEventListener("click", countDown)
+
+        this.#startButton.addEventListener("click", countDown);
+
+        this.#numberColor.addEventListener("input", ()=> {
+            let root = document.documentElement;
+            root.style.setProperty('--numberColor', this.#numberColor.value * 3.6);
+        })
     }
 }

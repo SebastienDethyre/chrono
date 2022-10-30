@@ -1,3 +1,7 @@
+:root {
+    --numberColor: 0;
+}
+
 body,html {
     margin: 0;
 }
@@ -9,6 +13,7 @@ body,html {
     background-color: lightgray;
     width: 100%;
     height: 50%;
+    
 }
 
 #startButton {
@@ -24,6 +29,45 @@ body,html {
     transform: scale(1.1)
 }
 
+#numberColor {
+    position: fixed;
+    top: 60%;
+    width: 60%;
+    height: 2em;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(
+        to top left,
+        rgba(122, 99, 255, .2),
+        rgba(130, 100, 255, .2) 30%,
+        rgba(109, 72, 72, 0));
+    box-shadow: inset 2px 2px 3px
+        rgba(51, 48, 65, 0.6),
+        inset -2px -2px 3px rgba(162, 151, 230, 0.6);
+    border-radius: 15px;
+}
+
+#numberColor::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgb(161, 148, 235);
+    cursor: pointer;
+}  
+
+#numberColor::-moz-range-thumb {
+    width: 2em;
+    height: 2em;
+    background: rgb(145, 137, 194);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 3px
+        rgba(51, 48, 65, 0.6),
+        inset -2px -2px 3px rgba(162, 151, 230, 0.6);
+}
+
 #clockFrame {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -35,7 +79,7 @@ body,html {
     "counter counter"
     "plus minus";
     height: 100%;
-    margin-top: .5em;
+    margin-top: .5em;   
 }
 
 #counter {
@@ -44,13 +88,21 @@ body,html {
     justify-content: center;
     align-items: center;
     background-color: darkgray;
-    border-radius: 25px;
     cursor: default;
-    
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(
+        to top left,
+        rgba(122, 99, 255, .2),
+        rgba(130, 100, 255, .2) 30%,
+        rgba(109, 72, 72, 0));
+    box-shadow: inset 2px 2px 3px
+        rgba(51, 48, 65, 0.6),
+        inset -2px -2px 3px rgba(162, 151, 230, 0.6);
+    border-radius: 4em;
 }
 
 #counter > h1 {
-    color: rgb(208, 2, 2);
     font-size: clamp(8em, 15em, 80%);
     font-family: 'digital', sans-serif;
     font-weight: 100;
@@ -92,10 +144,10 @@ body,html {
 @keyframes heartbeat_text{
     from{
         text-shadow: 0 0px 1px rgb(225, 225, 225); 
-        color: rgb(208, 2, 2); 
+        color: hsl(calc(var(--numberColor) - 9), 98%, 41%);; 
     }
     to{
-        text-shadow: 0 0px 25px rgba(253, 38, 0, 0.9);
-        color: rgba(253, 38, 0, 0.9);
+        text-shadow: 0 0px 25px hsl(var(--numberColor), 100%, 50%);
+        color: hsl(var(--numberColor), 100%, 50%);
     }
 }
